@@ -1,0 +1,336 @@
+% Vorlage Studien- und Diplomarbeiten, Bachelor- Masterarbeiten
+%
+% author: FG EMSP TU Berlin, Dipl.-Ing. Alexander Vorwerk
+%
+% last updated: 08.07.2021, by Amon Lahr
+
+% PREAMBLE, for use with pdfTex
+% before documentclass
+% disable pdfoutput to be able to include eps graphics and use packages like pstricks
+% conversion dvi2ps and ps2pdf needed afterwards, pdftex specials like hyperref are still possible
+%\pdfoutput=0														% dvi output - use with pdfcprot (character protruding)
+
+\RequirePackage{fix-cm} 											% error correction for standard fonts
+
+%% define CLASS
+%\documentclass[11pt, a4paper, parskip=half*, bibliography=totoc, cleardoublepage=empty, final,
+%numbers=noenddot]{scrbook} 											% begin every chapter one left page
+\documentclass[12pt, a4paper,%
+ parskip=half*, twoside, % oder doch twoside?
+ plainfootsepline,%
+ cleardoublepage=empty, % ongoing pages, no page break after chapter
+ bibliography=totoc,
+ final,% or draft / final
+ numbers=noenddot,
+ headsepline,
+ footsepline]{scrbook}
+\usepackage{scrhack}  
+
+%% misc
+%\usepackage{cmbright}												% serifenlose computer modern fonts
+\usepackage[T1]{fontenc}											% T1 fonts f�r gute pdf-Ausgabe
+\usepackage[utf8]{inputenc}										% wegen deutschen Umlauten
+\usepackage[automark]{scrlayer-scrpage}										% Koma Headers
+\usepackage{xspace}													%f�r leerzeichen bei \newcommand{\bla}{Blaaaaa\xspace}
+% prepare for german AND english, last language loaded is default
+%\usepackage[ngerman, english]{babel}								% switch by \begin{otherlanguage}{ngerman}.. \end{otherlanguage}
+\usepackage[ngerman,english]{babel}								% switch by \begin{otherlanguage}{english}.. \end{otherlanguage}
+
+%\usepackage{boxit}	 												% frame handling
+\usepackage{nag}													% warn user on outdated packages
+\usepackage[
+pdfborder={0 0 0},
+bookmarks=false,
+colorlinks=true,
+linkcolor=black,
+urlcolor=black,
+citecolor=black]{hyperref}			% links in pdf, thumbnails
+\usepackage{soul}													% emphasizing text, underlining
+%\usepackage[square]{natbib}										% andere Literaturverweise, z. B. Zahlen
+\usepackage{setspace}							    % 1.5, changeline spaces by \singlespacing \doublespacing
+\usepackage{lmodern}												% bessere Schriftdarstellung
+\usepackage{paralist} 										% \begin{compactenum}[(i)] f�hrt zu (i), (ii), (iii), (iv), ...
+																					% 									 [(I)] f�hrt zu (I), (II), (III), (IV), ...
+																					% 									 [a)] f�hrt zu a), b), c), d), ...
+
+
+
+%% tables
+\usepackage{multicol} 												% multiple columns in tables
+\usepackage{multirow}												% multiple rows in tables
+\usepackage[margin=10pt,labelfont=bf]{caption}	% table headers
+\usepackage{hhline}													% horizontal lines
+\usepackage{longtable}												% pagebreak tables
+\usepackage{booktabs}												% bold table lines, e.g. \toprule
+\usepackage{tabularx}												% neue Tabular-Umgebung
+\newcolumntype{f}{>{$}l<{$}}
+\usepackage{booktabs} %dicke und d�nne linien f�r tabelle z.b. \toprule
+
+%% math, symbols
+\usepackage{amsmath}												% AMS Math like brackets, integrals...
+\usepackage{bm}														% FAT LETTERS in Math
+\usepackage{amssymb}  												% AMS-Symbols v2.0
+\usepackage{fixmath}												% big greek letters italic in math mode
+\usepackage{array}													% matrices
+\usepackage{units}		  											% includes nicefrac, nicer fracs for one line, SI-Units
+\usepackage{trfsigns}												% symbole f�r transformationen
+\usepackage{textcomp}												% einfache Sonderzeichen, z.B. \texteuro
+\usepackage{gensymb}												% correct greek letters in units,\micro instead of \mu
+\usepackage[integrals]{wasysym}										% for integrals like \oiint
+%\usepackage[version=3]{mhchem}										% easy typesetting of chemical formulae
+% \usepackage{ziffer}													% let"',"' be a valid delimiter in formulaes
+% \usepackage{dsfont}													% f�r andere Mengenzeichen, $\mathds{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+\usepackage{bm} %fett in matheumg mit \bm{}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+
+%% graphics
+%\usepackage[activate]{pdfcprot}									% use margin kerning (character protruding) (Opt. Randausgleich)
+\usepackage{microtype}												% character protruding, font expansion - instead of pdfcprot
+\usepackage{graphicx}												% include graphics
+\usepackage{epstopdf}
+\usepackage{epsfig}												% eps->pdf um auch eps f�r graphicx zu benutzen
+\usepackage{wrapfig} 												% graphics in text
+\usepackage{floatflt}												% graphics/tables in text
+%\usepackage{rotating} 												% rotating elements
+\usepackage[svgnames]{xcolor}										% colors for listings
+\usepackage{psfrag}													% Text in .eps Grafiken ersetzen
+\usepackage{float}												  %Bildeinbindung wird an aktueller stelle erzwungen:{figure}[H]
+%\usepackage{subfig} 												%%Teilabbildungen in einer Abbildung
+\usepackage{tikz} 													%%Vektorgrafiken aus LaTeX heraus erstellen
+\usepackage{listings}												% for programming source code
+%%Befehl: \lstinline |...| oder 
+%%\begin{lstlisting}[caption=Beispielcode]{Name}
+%%print "hello world";
+%%\end{lstlisting}   oder
+%%\lstinputlisting[frame=single,label=beispielcode,caption=Ein Beispiel]{beispiel.pl}
+
+%% layout
+%\usepackage[top=2.5cm,left=2.5cm,right=2.5cm,bottom=2.5cm]{geometry} 
+%\usepackage[top=2.5cm,left=3cm,right=2.5cm,bottom=2.5cm]{geometry} 
+\usepackage[twoside,bindingoffset=6mm,top=2.5cm,left=2.5cm,right=2.5cm,bottom=2.5cm]{geometry} 
+
+%%%Literaturverzeichnis Biblatex
+%\usepackage[style=numeric,sorting=none,url=false,backend=bibtex]{biblatex}
+\usepackage[backend=biber,
+style=ext-numeric,
+sorting=nyt,
+maxnames=6,
+giveninits=true,
+date=year]{biblatex}
+
+\addbibresource{./docs/Literatur.bib}
+
+\DeclareFieldFormat[article]{titlecase:title}{\MakeSentenceCase{#1}}
+
+% clear ISSN
+%\AtEveryBibitem{
+%\clearfield{issn}%
+%\clearfield{month}%
+%\clearfield{note}%
+%\clearlist{language}%
+%\ifentrytype{misc}{}{\clearfield{url}\clearfield{urlyear}}%
+%}
+
+\AtEveryBibitem{
+\clearfield{issn}%
+\iffieldequalstr{note}{{arXiv}}{}{\clearfield{month}}%
+\clearfield{note}%
+\clearlist{language}%
+\ifentrytype{report}{}{\ifentrytype{misc}{}{\ifentrytype{unpublished}{}{\clearfield{url}\clearfield{urlyear}}}}%
+}
+
+%\AtEveryCitekey{\clearfield{issn}
+%\clearfield{month}
+%\clearfield{note}
+%\clearlist{language}
+%}
+
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+
+\usepackage[babel,german=guillemets]{csquotes}
+
+% EIGEN
+\usepackage{verbatimbox}
+\usepackage{placeins}
+\usepackage{fancyvrb}
+\usepackage{subcaption} %subfigures in figure environment
+\usepackage{relsize} %mathlarger larger font in math mode
+\usepackage{mathtools} %Aboxed box around equation in align
+
+\usepackage{ltxtable} % long tabularx with pagebreak
+\usepackage{filecontents} % Environment to store content dynamically somewhere else
+\usepackage{chngcntr} % change counters
+\usepackage{pdfpages}
+\usepackage{arydshln} % dashed line \hdashline in arrays (NOT COMPATIBLE WITH TABULARX)
+
+\usepackage{enumitem} % resume lists
+% \usepackage[shortlabels]{enumitem} % short labels for enumitem
+
+\usepackage[ruled,vlined,boxed,linesnumbered,algochapter]{algorithm2e} % ALGORITHMS
+
+\usepackage{pgfplots}
+%\usepgfplotslibrary{external} 
+%\tikzexternalize
+
+\pgfplotsset{
+   /pgf/number format/.style={
+     sci,
+     precision=4,
+     },
+  }
+%\pgfplotsset{compat=1.15}
+  
+\usepackage{siunitx}
+%\usepackage{icomma}
+
+% ----------------------------------
+% ALGORITHM SYTLE
+% ----------------------------------
+\SetArgSty{}
+\SetAlgoVlined
+\SetKwInput{KwInput}{Inputs}
+\SetKwInput{KwOutput}{Outputs}
+
+\makeatletter
+% Patch 1
+% \renewenvironment{algomathdisplay}
+% {\[}
+% {\@endalgocfline\vspace{-\baselineskip}\]\;}
+% Patch 2
+\renewenvironment{algomathdisplay}{%
+    \[%
+    }{%
+    \@endalgocfline%
+    \]%
+    %\ifthenelse{\boolean{algocf@linesnumbered}}{\nl}{\relax}% <- in the original .sty
+    }%
+\makeatother
+    
+\usepackage[disable]{todonotes} % TODO notes, [disable] disables
+
+\usepackage{mathrsfs} % \mathscr letters
+
+% Custom commands in userDef
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% document definitions, do not change
+
+\input{./format/mandaDef}         								% input only replaces text, include creates newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% user definitions, change this!
+\input{./format/userDef}   										% input only replaces text, include creates newpage
+
+% automake
+\usepackage[automake,xindy={language=english},acronyms,nonumberlist,toc,nogroupskip=true]{glossaries} % glossaries + acronym glossary
+% \setglossarypreamble{Für eine Liste der Materialparameter des Materialmodells MAT262 siehe Kapitel \ref{sec:MAT262_Parameter}.}
+%\usepackage{nomencl} % nomencature, easy glossary
+
+\makeglossaries % create makeindex files
+\input{./docs/Acronyms}
+\input{./docs/Symbols}
+
+%%%%%%%%%%%%%%% THESIS START %%%%%%%%%%%%%%
+
+% -------------------- LINE STRETCH --------------------------
+\setstretch{1.1}
+
+\begin{document}
+%Selbstdefinierte Befehle
+\newcommand{\rot}{\textcolor[rgb]{1,0,0}} %\rot{}
+\newcommand{\E}{\cdot 10^}
+\renewcommand*{\chapterheadstartvskip}{\vspace*{0pt}}
+
+\VerbatimFootnotes
+
+	% Titelblatt
+	\frontmatter
+	\input{./docs/Title}
+	
+	% Eidesstattliche Erklärung
+	\chapter*{Eidesstattliche Erklärung}
+		\input{./docs/Erklaerung}
+		
+	% Abstract
+	\chapter*{Abstract}
+		\input{./docs/Abstract}
+
+			
+	\cleardoublepage
+	\tableofcontents 												% 
+	
+	\listoftodos
+	
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{List of Figures}
+	\listoffigures
+	
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{List of Tables}	
+	\listoftables
+	
+	%\glssetwidest{LRCF-ADI  }
+	\printglossary[title=Acronyms,type=\acronymtype,style=alttree]
+	%\addcontentsline{toc}{chapter}{List of Acronyms}	
+	
+%	\glssetwidest[0]{}
+%	\glssetwidest[1]{$\mathcal{RL}_\infty^{p \times q}$, $\mathcal{RH}_\infty^{p \times q}$  }
+	\renewcommand{\glsnamefont}[1]{\normalfont{#1}}
+	\printglossary[title=Symbols and Notation,style=alttree]
+	
+	% Hauptteil
+	\newpage
+	%\pagenumbering{arabic}
+	\mainmatter	
+	%\setcounter{page}{1}
+	
+	% ------------------------------- 
+	% SECTIONS HERE
+	% ------------------------------- 
+	
+	\input{./docs/Introduction}
+
+	\input{./docs/Summary}	
+	
+	%\cleardoublepage
+	% \backmatter
+	% \pagenumbering{Roman}	
+	% Bibliographie
+	\begin{flushleft}
+		\printbibliography	
+	\end{flushleft}	
+	
+	% Anhang
+	\appendix
+	
+	\chapter*{Appendix}
+	\addcontentsline{toc}{chapter}{Appendix}
+	
+	\counterwithin{figure}{section}
+	\counterwithin{table}{section}
+	\counterwithin{equation}{section}
+	\counterwithin{theorem}{section}
+	%\setcounter{section}{0}
+	\renewcommand{\thesection}{\Alph{section}}
+	\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+	\renewcommand{\thetable}{\thesection.\arabic{table}} 
+	\renewcommand{\theequation}{\thesection.\arabic{equation}}   
+	%\addcontentsline{toc}{chapter}{Anhang}
+	%\pagenumbering{Roman}
+	\input{./docs/Appendix}
+	
+	% Add unused glossary entries
+	\glsaddallunused												
+\end{document}
+
+%%%%%%%%%%%%%%% END %%%%% %%%%%%%%%%
+
+
+
+
+
+
+
+
+

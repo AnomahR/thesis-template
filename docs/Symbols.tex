@@ -1,0 +1,19 @@
+% Kategorien: Lateinisch, Griechisch
+\newglossaryentry{number_fields}{name={},
+description={\nopostdesc},sort=A}
+\newglossaryentry{special_numbers}{name={},
+description={\nopostdesc},sort=AA}
+
+% ----------------------------- Number Fields
+
+\newglossaryentry{RealNumber}{name={$\mathbb{R}$},sort={1_Real},description={Field of real numbers},parent=number_fields}
+
+\newglossaryentry{ComplexNumber}{name={$\mathbb{C}$},sort={2_Complex},description={Field of complex numbers},parent=number_fields}
+
+% ----------------------------- Special Numbers
+
+\newglossaryentry{ImaginaryUnit}{name={$j$},sort={j},description={Imaginary unit with $j^2 = -1$},parent=special_numbers}
+
+\newglossaryentry{DiagOperator}{name={$\diag(a_1,\ldots,a_n)$},sort={0_fix_diag},description={Diagonal matrix with $a_1,\ldots,a_n$ on the diagonal},parent=special_numbers} % $a_i \in \mathbb{C}$, $i = 1 \ldots n$
+
+\newglossaryentry{Identity}{name={$I_n$},sort={0_fix_identity},description={Identity matrix of dimension $n \times n$},parent=special_numbers}

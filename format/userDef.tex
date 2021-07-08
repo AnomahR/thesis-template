@@ -1,0 +1,46 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TO CHANGE
+% path and extension of graphics, to be continued
+\graphicspath{{./images/}}
+\DeclareGraphicsExtensions{.eps}
+
+% author, title, date of thesis 
+\newcommand*{\Title}{Your Title}
+\newcommand*{\Autor}{Your Name}
+%\newcommand*{\Datum}{Berlin, \today}
+\newcommand*{\Datum}{Your Date}
+\title{\Title}
+\author{\Autor} 
+\date{\Datum}
+
+% Beispiel für Definition neuer Kommandos für häufig gebrauchte Konstrukte
+\newcommand{\tfk}[1]{\textsl{\texttt{#1}}}
+% correct spacing in align+array environment (... \arrcor & = ...)
+\newcommand{\arrcor}{\! \! \! \!}
+
+\DeclareMathOperator{\largevarepsilon}{\mathlarger{\mathlarger{\varepsilon}}}
+\DeclareMathOperator{\RE}{Re}
+\DeclareMathOperator{\IM}{Im}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\spanop}{span}
+\DeclareMathOperator{\diag}{diag}
+% für Standardumgebungen
+%\renewcommand{\labelitemi}{*}												% Aufzählungszeichen definieren
+
+% Mathematical environments
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{observation}[theorem]{Observation}
+
+\theoremstyle{definition}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% scalebox for math
+\newcommand{\scaleboxfix}[1]{\scalebox{0.7}{#1}}
